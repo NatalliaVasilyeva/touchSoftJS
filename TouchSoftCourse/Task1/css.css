@@ -1,0 +1,89 @@
+.main-window-class {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin: 10px 0;
+    width:500px;
+    height:600px;
+    right:10px;
+    position: absolute;
+    bottom:15px;
+}
+
+.content-area {
+    background: #e5e5e5;
+    margin: 0;
+    padding: 0 10px 10px;
+    max-height:300px;
+    overflow-x:hidden;
+    position: relative;
+}
+
+.history-area-all-class{
+    background: greenyellow;
+    margin: 0;
+    padding: 0 10px 10px;
+    /*width: 450px;*/
+    height: 500px;
+    overflow-x:hidden;
+    position: relative;
+}
+
+
+.chat-header-class {
+    background: #666;
+    color: blue;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    /*text-align: center;*/
+}
+
+ #minBtn  {
+     height: 30px;
+     width: 30px;
+     position: relative;
+    margin-right: 0px;
+
+}
+
+.history-area {
+    background: white;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    max-width:100%;
+}
+
+.current-message-block{
+    display: table;
+    vertical-align: middle;
+    height: 30px;
+    padding: 5px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.input-area-class {
+    display: table-cell;
+    vertical-align: middle;
+    height: 30px;
+    padding: 5px;
+    width: 70%;
+    position: absolute;
+    bottom: 0px;
+   left: 0px;
+}
+
+.send-button-class{
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px;
+    padding: 5px;
+    width: 27%;
+    position: absolute;
+    bottom: 0px;
+   right: 0px;
+}
+
