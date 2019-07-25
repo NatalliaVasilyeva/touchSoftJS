@@ -1,89 +1,137 @@
 .main-window-class {
-    border: 2px solid #dedede;
+    border: 2px solid black;
     background-color: #f1f1f1;
-    border-radius: 5px;
+    border-radius: 15px;
     margin: 10px 0;
     width:500px;
-    height:600px;
     right:10px;
-    position: absolute;
+    position: fixed;
     bottom:15px;
 }
 
-.content-area {
-    background: #e5e5e5;
-    margin: 0;
-    padding: 0 10px 10px;
-    max-height:300px;
+.chat-header-class {
+    background: lightskyblue;
+    color: blue;
+    padding: 5px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+    border: 0px solid darkblue;
+border-radius: 15px 15px 0 0;
+    /*text-align: center;*/
+}
+
+.content-area-class {
+    /*margin: 0 0 0 0;*/
+    /*padding: 0 0 10px 10px;*/
+    height:610px;
     overflow-x:hidden;
     position: relative;
 }
 
 .history-area-all-class{
-    background: greenyellow;
+    border-bottom: 2px solid black;
+    border-top:2px solid black;
+    background: aqua;
     margin: 0;
-    padding: 0 10px 10px;
-    /*width: 450px;*/
+    max-width: 500px;
     height: 500px;
     overflow-x:hidden;
     position: relative;
 }
 
+#history-area {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding-left: 5%;
+    padding-right: 3%;
+    border-radius: 10px;
+    height: 480px;
+    width: 90%;
+    overflow-y: auto;
+    overflow-x: auto;
+   margin-bottom: 0;
+    /*list-style-type: none;*/
 
-.chat-header-class {
-    background: #666;
-    color: blue;
-    padding: 10px;
-    position: relative;
-    overflow: hidden;
-    /*text-align: center;*/
 }
+
+.history-area-all-class li {
+    /*border: grey 2px solid;*/
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+
+.my-message-class{
+    background: khaki;
+    color: darkblue;
+    text-align: left;
+
+}
+
+.bot-message-class{
+    background: lightcyan;
+    color: purple;
+    text-align: right;
+
+}
+
+.current-message-block-class{
+    background: lightskyblue;
+    /*border-top: black solid 2px;*/
+    /*display: table;*/
+    vertical-align: middle;
+    height: 100px;
+    /*padding: 5px;*/
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    border-radius: 0 0 15px 15px;
+}
+
+.input-area-class {
+    /*display: table-cell;*/
+    vertical-align: middle;
+    height: 100px;
+    /*padding: 5px;*/
+    width: 80%;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 0 0 0 15px;
+    resize: none;
+    border-right: 2px solid black;
+    float: left;
+}
+
+.send-button-class{
+    /*display: table-cell;*/
+    vertical-align: middle;
+    height: 100px;
+    padding: 5px;
+    width: 19%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-radius: 0 0 15px 0;
+    border-left: 2px solid black;
+    margin-left: 10px;
+
+
+}
+
 
  #minBtn  {
      height: 30px;
      width: 30px;
      position: relative;
-    margin-right: 0px;
+     float: right;
 
 }
 
-.history-area {
-    background: white;
-    padding: 10px;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    max-width:100%;
-}
 
-.current-message-block{
-    display: table;
-    vertical-align: middle;
-    height: 30px;
-    padding: 5px;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-}
 
-.input-area-class {
-    display: table-cell;
-    vertical-align: middle;
-    height: 30px;
-    padding: 5px;
-    width: 70%;
-    position: absolute;
-    bottom: 0px;
-   left: 0px;
+.hidden {
+    display: none;
 }
-
-.send-button-class{
-    display: table-cell;
-    vertical-align: middle;
-    height: 40px;
-    padding: 5px;
-    width: 27%;
-    position: absolute;
-    bottom: 0px;
-   right: 0px;
-}
-

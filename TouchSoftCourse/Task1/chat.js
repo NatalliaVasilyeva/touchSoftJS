@@ -4,6 +4,7 @@ var contentArea = null;
 var header = null;
 var currentMessageBlock = null;
 var historyElement;
+var historyArea;
 var inputAreaElement;
 var headerElement;
 var contentAreaElement;
@@ -34,7 +35,7 @@ function createHistoryArea() {
     var allHistory = document.createElement('div');
     allHistory.id = 'history-area-all';
     allHistory.classList.add('history-area-all-class');
-    var historyArea = document.createElement('ul');
+    historyArea = document.createElement('ul');
     historyArea.id = 'history-area';
     historyArea.classList.add('history-area-class');
     allHistory.appendChild(historyArea);
@@ -69,7 +70,6 @@ function createChat() {
     mainWindow.classList.add('main-window-class');
     header = createChatHeader();
     contentArea = createContentArea();
-    // historyArea = createHistoryArea();
     currentMessageBlock = createCurrentMessageBlock();
     inputArea = createInputArea();
     sendBtn = createSendButton();
@@ -95,21 +95,33 @@ function createChat() {
     minBtn = document.getElementById('minBtn');
 
     sendBtn.addEventListener('click', sendMessage);
-    minBtn.addEventListener('click', minimizeWindow);
+    minBtn.addEventListener('click', changeWindow);
 
 }
 
 function createMessage(sender, text) {
-    var date = new Date();
-    var message = {sender: sender, date: date.getDate(), content: text}
+    var date = new Date().toLocaleTimeString();
+    var message = {sender: sender, date: date, content: text}
     return message;
 }
 
 function addMessageToOutputArea(message) {
     var li = document.createElement('li');
-    var outputMessage = document.createTextNode(message.sender + ' ' + message.date + ' ' + message.content);
-    li.appendChild(outputMessage);
-    historyElement.appendChild(li);
+    if(message.sender==='You'){
+        li.classList.add('my-message-class');
+    }
+    else{
+        li.classList.add('bot-message-class');
+    }
+    var outputMessage1 = document.createTextNode(message.sender + ': ' + message.date);
+
+    var p = document.createElement('p');
+    var outputMessage2 = document.createTextNode(message.content);
+    p.appendChild(outputMessage2);
+    li.appendChild(outputMessage1);
+    li.appendChild(p);
+    historyArea.appendChild(li);
+    if(historyArea) historyArea.scrollTop=historyArea.scrollHeight;
 }
 
 function sendMessage() {
@@ -123,15 +135,14 @@ function sendMessage() {
     }
 }
 
-function minimizeWindow() {
-    var windowState = localStorage.getItem('windowState');
-    if (windowState == false) {
+function changeWindow() {
+    if (isMinState === false) {
         document.getElementById('content-area').classList.remove('hidden');
     } else {
         document.getElementById('content-area').classList.add('hidden');
     }
     isMinState = !isMinState;
-    localStorage.setItem('windowState', isMinState);
+    localStorage.setItem('isMinimise', isMinState);
 }
 
 function sendBotAnswer(message) {
@@ -158,7 +169,6 @@ function loadMessageFromLocalStorage() {
     var messages = [];
     if (historyMessages !== null) {
         messages = JSON.parse(historyMessages);
-
         for (elem in messages) {
             addMessageToOutputArea(messages[elem]);
         }
@@ -166,18 +176,14 @@ function loadMessageFromLocalStorage() {
         localStorage.setItem('history', JSON.stringify([]));
     }
 
-    if (localStorage.getItem('isMinimise') === true) {
-        isMinState = true;
-    } else {
-        isMinState = false;
-    }
+    isMinState = localStorage.getItem('isMinimise') === true || localStorage.getItem('isMinimize')===null;
 }
 
 
 window.onload = function startChat() {
     createChat();
     loadMessageFromLocalStorage();
-    if (isMinState == true || isMinState == null) {
+    if (isMinState === true) {
         document.getElementById('content-area').classList.add('hidden');
     } else {
         document.getElementById('content-area').classList.remove('hidden');
