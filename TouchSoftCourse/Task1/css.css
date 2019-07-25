@@ -18,7 +18,6 @@
     overflow: hidden;
     border: 0px solid darkblue;
 border-radius: 15px 15px 0 0;
-    /*text-align: center;*/
 }
 
 .content-area-class {
@@ -52,12 +51,10 @@ border-radius: 15px 15px 0 0;
     overflow-y: auto;
     overflow-x: auto;
    margin-bottom: 0;
-    /*list-style-type: none;*/
 
 }
 
 .history-area-all-class li {
-    /*border: grey 2px solid;*/
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 5px;
@@ -79,8 +76,6 @@ border-radius: 15px 15px 0 0;
 
 .current-message-block-class{
     background: lightskyblue;
-    /*border-top: black solid 2px;*/
-    /*display: table;*/
     vertical-align: middle;
     height: 100px;
     /*padding: 5px;*/
@@ -91,10 +86,8 @@ border-radius: 15px 15px 0 0;
 }
 
 .input-area-class {
-    /*display: table-cell;*/
     vertical-align: middle;
     height: 100px;
-    /*padding: 5px;*/
     width: 80%;
     position: relative;
     bottom: 0px;
@@ -106,7 +99,6 @@ border-radius: 15px 15px 0 0;
 }
 
 .send-button-class{
-    /*display: table-cell;*/
     vertical-align: middle;
     height: 100px;
     padding: 5px;
@@ -118,19 +110,14 @@ border-radius: 15px 15px 0 0;
     border-left: 2px solid black;
     margin-left: 10px;
 
-
 }
-
 
  #minBtn  {
      height: 30px;
      width: 30px;
      position: relative;
      float: right;
-
 }
-
-
 
 .hidden {
     display: none;

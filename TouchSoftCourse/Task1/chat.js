@@ -14,14 +14,128 @@ var currentMessageBlockElement;
 var minBtn;
 var isMinState;
 
+var chatCssStyle =
+    '.main-window-class {' +
+    'border: 2px solid black;' +
+    'background-color: #f1f1f1;' +
+    'border-radius: 15px;' +
+    'margin: 10px 0;' +
+    'width:500px;' +
+    'right:10px;' +
+    'position: fixed;' +
+    'bottom:15px;' +
+    '}' +
+    '.chat-header-class {' +
+    'background: lightskyblue;' +
+    'color: blue;' +
+    'padding: 5px;' +
+    'height: 30px;' +
+    'position: relative;' +
+    'overflow: hidden;' +
+    'border: 0px solid darkblue;' +
+    'border-radius: 15px 15px 0 0;' +
+    '}' +
+    '.content-area-class {' +
+    'height:610px;' +
+    'overflow-x:hidden;' +
+    'position: relative;' +
+    '}' +
+    '.history-area-all-class {' +
+    'border-bottom: 2px solid black;' +
+    'border-top:2px solid black;' +
+    'background: aqua;' +
+    'margin: 0;' +
+    'max-width: 500px;' +
+    'height: 500px;' +
+    'overflow-x:hidden;' +
+    'position: relative;' +
+    '}' +
+    '#history-area {' +
+    'display: inline-block;' +
+    'background: white;' +
+    'color: black;' +
+    'padding-left: 5%;' +
+    'padding-right: 3%;' +
+    'border-radius: 10px;' +
+    'height: 480px;' +
+    'width: 90%;' +
+    'overflow-y: auto;' +
+    'overflow-x: auto;' +
+    'margin-bottom: 0;' +
+    '}' +
+    '.history-area-all-class li {' +
+    'padding-bottom: 10px;' +
+    'padding-top: 10px;' +
+    'margin-bottom: 5px;' +
+    '}' +
+    '.my-message-class{' +
+    'background: khaki;' +
+    'color: darkblue;' +
+    'text-align: left;' +
+    '}' +
+    '.bot-message-class{' +
+    'background: lightcyan;' +
+    'color: purple;' +
+    'text-align: right;' +
+    '}' +
+    '.current-message-block-class{' +
+    'background: lightskyblue;' +
+    'vertical-align: middle;' +
+    'height: 100px;' +
+    'width: 100%;' +
+    'position: relative;' +
+    'bottom: 0px;' +
+    'border-radius: 0 0 15px 15px;' +
+    '}' +
+    '.input-area-class {' +
+    'vertical-align: middle;' +
+    'height: 100px;' +
+    'width: 80%;' +
+    'position: relative;' +
+    'bottom: 0px;' +
+    'left: 0px;' +
+    'border-radius: 0 0 0 15px;' +
+    'resize: none;' +
+    'border-right: 2px solid black;' +
+    'float: left;' +
+    '}' +
+    '.send-button-class{' +
+    'vertical-align: middle;' +
+    'height: 100px;' +
+    'padding: 5px;' +
+    'width: 19%;' +
+    'position: absolute;' +
+    'bottom: 0px;' +
+    'right: 0px;' +
+    'border-radius: 0 0 15px 0;' +
+    'border-left: 2px solid black;' +
+    'margin-left: 10px;' +
+    '}' +
+    '#minBtn  {' +
+    'height: 30px;' +
+    'width: 30px;' +
+    'position: relative;' +
+    'float: right;' +
+    '}' +
+    '.hidden {' +
+    'display: none;' +
+    '}';
 
-function createChatHeader() {
-    var header = document.createElement('div');
-    header.id = 'chat-header';
-    header.classList.add('chat-header-class');
-    header.innerHTML = "<button id ='minBtn' type = 'submit'>-</button>";
-    return header;
-}
+
+    function createStyle() {
+    var cssStyle = document.createElement('style');
+    cssStyle.innerHTML=chatCssStyle;
+    return cssStyle;
+
+    }
+
+    function createChatHeader() {
+        var header = document.createElement('div');
+        header.id = 'chat-header';
+        header.classList.add('chat-header-class');
+        header.innerHTML = "<button id ='minBtn' type = 'submit'>-</button>";
+        return header;
+    }
 
 function createContentArea() {
     var contentArea = document.createElement('div');
@@ -87,6 +201,7 @@ function createChat() {
     contentArea.appendChild(historyElement);
     contentArea.appendChild(currentMessageBlockElement);
 
+    mainWindow.appendChild(createStyle());
     mainWindow.appendChild(header);
     mainWindow.appendChild(contentArea);
 
@@ -107,10 +222,9 @@ function createMessage(sender, text) {
 
 function addMessageToOutputArea(message) {
     var li = document.createElement('li');
-    if(message.sender==='You'){
+    if (message.sender === 'You') {
         li.classList.add('my-message-class');
-    }
-    else{
+    } else {
         li.classList.add('bot-message-class');
     }
     var outputMessage1 = document.createTextNode(message.sender + ': ' + message.date);
@@ -121,7 +235,7 @@ function addMessageToOutputArea(message) {
     li.appendChild(outputMessage1);
     li.appendChild(p);
     historyArea.appendChild(li);
-    if(historyArea) historyArea.scrollTop=historyArea.scrollHeight;
+    if (historyArea) historyArea.scrollTop = historyArea.scrollHeight;
 }
 
 function sendMessage() {
@@ -176,7 +290,7 @@ function loadMessageFromLocalStorage() {
         localStorage.setItem('history', JSON.stringify([]));
     }
 
-    isMinState = localStorage.getItem('isMinimise') === true || localStorage.getItem('isMinimize')===null;
+    isMinState = localStorage.getItem('isMinimise') === true || localStorage.getItem('isMinimize') === null;
 }
 
 
